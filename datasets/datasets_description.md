@@ -328,6 +328,7 @@ This parameter is also used to generate exact solution
   \right].
     \end{split}
 \end{equation}
+```
 
 ## Elastoplasticity
 
