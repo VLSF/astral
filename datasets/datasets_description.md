@@ -332,6 +332,8 @@ This parameter is also used to generate exact solution
 
 ## Elastoplasticity
 
+This example is from https://www.sciencedirect.com/science/article/abs/pii/S004578259601136X.
+
 Let $K_0$, $\mu$, $k_{\star}$, $\delta$ are positibe constants, $u$ denotes deformation vector. Given that, elastoplastic deformations are described by the following PDE
 
 ```math
