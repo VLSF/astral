@@ -328,3 +328,48 @@ This parameter is also used to generate exact solution
   \right].
     \end{split}
 \end{equation}
+
+## Elastoplasticity
+
+Let $K_0$, $\mu$, $k_{\star}$, $\delta$ are positibe constants, $u$ denotes deformation vector. Given that, elastoplastic deformations are described by the following PDE
+
+```math
+\begin{split}
+  &\partial_1 \sigma_{11}(u) + \partial_2 \sigma_{21}(u) + f_1 = 0,\,x_1,x_2\in\Gamma;\\
+  &\partial_1 \sigma_{12}(u) + \partial_2 \sigma_{22}(u) + f_2 = 0,\,x_1,x_2\in\Gamma;\\
+  &\left.u_1\right|_{\partial\Gamma} = \left.u_2\right|_{\partial\Gamma} = 0,\,\Gamma = (0, 1)^2,
+\end{split}
+```
+
+where $\partial\Gamma$ is a boundary of $\Gamma$ and
+
+```math
+\begin{split}
+  &\sigma(u) = K_0\left(\partial_1 u_1 + \partial_2 u_2\right) I + \gamma\left(\left\|\epsilon^{D}(u)\right\|_{F}\right) \epsilon^{D}(u);\\
+  &\epsilon(u) = \begin{pmatrix}\partial_1 u_1 & \partial_1 u_2\\\partial_2 u_1 & \partial_2 u_2\end{pmatrix},\,\epsilon^{D}(u) = \epsilon(u) - I \text{tr}\epsilon(u);\\
+  &\gamma(t) = \begin{cases}2\mu,\,|t| < t_0 =\frac{k_{*}}{2\sqrt{\mu}};\\(2\mu-\delta)\frac{t_0}{\left\|t\right\|} + \delta,\,|t|>t_0.\end{cases}
+\end{split}
+```
+
+**Error majorant:**
+
+Natural energy norm for this problem reads
+
+```math
+E[u - v]^2 = \int dx \left(K_0\left(\partial_1 (u-v)_1 + \partial_2 (u-v)_2\right)^2 + 2\mu\left(\frac{1}{2}\left(\partial_1(u-v)_1-\partial_2(u-v)_2\right)^2 + \left(\partial_1(u-v)_2\right)^2 + \left(\partial_2(u-v)_1\right)^2\right)\right)
+```
+
+And the upper bound is
+```math
+E[u - v]^2 \leq - 2C_0 \inf_{w}\left(\frac{1}{2}\left\|w\right\|_a^2 + \mathcal{L}(\Lambda \epsilon(v); w)\right),
+```
+
+where
+```math
+\begin{split}
+&\left\|w\right\|_a^2 = \int dx \left(K_0\left(\text{tr}\epsilon(w)\right)^2 + 2 \mu \left\|\epsilon^D(w)\right\|_F^2\right),\\
+&\mathcal{L}(\Lambda \epsilon(v); w) = \int dx \left(\sum_{ij}\left(\Lambda \epsilon(v)\right)_{ij}\epsilon(w)_{ij} - f\cdot w\right),\\
+&\Lambda \epsilon(v) = K_0 \text{tr} \epsilon(v) I + \gamma(\left\|\epsilon(v)\right\|_{F}) \epsilon^{D}(v),\\
+&C_0 = 1+\frac{2\mu_1}{\alpha_1^{*}},\,\mu_1 = 1 - \frac{\delta}{2\mu},\,\alpha_1^{*} = \inf_{t_{11}, t_{12}, t_{22}} \frac{\frac{1}{4K_0}\left(t_{11} + t_{22}\right)^2 + \frac{1}{4\mu}\left(t_{11} - t_{22}\right)^2 + \frac{1}{\mu}t_{12}^2}{t_{11}^2 + 2t_{12}^2 + t_{22}^2}.
+\end{split}
+```
