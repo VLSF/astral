@@ -371,8 +371,7 @@ where
 ```math
 \begin{split}
 &\left\|w\right\|_a^2 = \int dx \left(K_0\left(\text{tr}\epsilon(w)\right)^2 + 2 \mu \left\|\epsilon^D(w)\right\|_F^2\right),\\
-&\mathcal{L}(\Lambda \epsilon(v); w) = \int dx \left(\sum_{ij}\left(\Lambda \epsilon(v)\right)_{ij}\epsilon(w)_{ij} - f\cdot w\right),\\
-&\Lambda \epsilon(v) = K_0 \text{tr} \epsilon(v) I + \gamma(\left\|\epsilon^{D}(v)\right\|_{F}) \epsilon^{D}(v),\\
+&\mathcal{L}(\Lambda \epsilon(v); w) = \int dx \left(\sum_{ij}\left(\sigma(v)\right)_{ij}\epsilon(w)_{ij} - f\cdot w\right),\\
 &C_0 = 1+\frac{2\mu_2}{\alpha_1^{*}},\,\mu_2 = \frac{2\mu - \delta}{4\mu\delta},\,\alpha_1^{*} = \inf_{t^\top = t} \frac{\frac{1}{4K_0}\left(\text{tr}t\right)^2 + \frac{1}{2\mu}\left\|t^D\right\|_{F}^2}{\left\|t\right\|_{F}^2}.
 \end{split}
 ```
