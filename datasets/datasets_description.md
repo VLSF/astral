@@ -359,7 +359,7 @@ where $\partial\Gamma$ is a boundary of $\Gamma$ and
 Natural energy norm for this problem reads
 
 ```math
-E[u - v]^2 = \int dx \left(K_0\left(\partial_1 (u-v)_1 + \partial_2 (u-v)_2\right)^2 + \frac{\delta}{2}\left(\left(\partial_1(u-v)_1-\partial_2(u-v)_2\right)^2 + \left(\partial_1(u-v)_2+\partial_2(u-v)_1\right)^2\right)\right)
+E[u - v]^2 = \int dx \left(K_0\left(\partial_1 (u-v)_1 + \partial_2 (u-v)_2\right)^2 + \frac{\delta}{2}\left(\left(\partial_1(u-v)_1-\partial_2(u-v)_2\right)^2 + \left(\partial_1(u-v)_2+\partial_2(u-v)_1\right)^2\right)\right) = \int dx \left(K_0\left(\text{tr}\epsilon(u-v)\right)^2 + \delta \left\|\epsilon^D(u-v)\right\|_{F}^2\right)
 ```
 
 And the upper bound is
