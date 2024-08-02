@@ -349,7 +349,7 @@ where $\partial\Gamma$ is a boundary of $\Gamma$ and
 ```math
 \begin{split}
   &\sigma(u) = K_0\left(\partial_1 u_1 + \partial_2 u_2\right) I + \gamma\left(\left\|\epsilon^{D}(u)\right\|_{F}\right) \epsilon^{D}(u);\\
-  &\epsilon(u) = \begin{pmatrix}\partial_1 u_1 & \partial_1 u_2\\\partial_2 u_1 & \partial_2 u_2\end{pmatrix},\,\epsilon^{D}(u) = \epsilon(u) - I \text{tr}\epsilon(u);\\
+  &\epsilon(u) = \begin{pmatrix}\partial_1 u_1 & \partial_1 u_2\\\partial_2 u_1 & \partial_2 u_2\end{pmatrix},\,\epsilon^{D}(u) = \epsilon(u) - \frac{1}{2}I \text{tr}\epsilon(u);\\
   &\gamma(t) = \begin{cases}2\mu,\,|t| < t_0 =\frac{k_{*}}{2\sqrt{\mu}};\\(2\mu-\delta)\frac{t_0}{\left\|t\right\|} + \delta,\,|t|>t_0.\end{cases}
 \end{split}
 ```
