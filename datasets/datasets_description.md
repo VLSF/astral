@@ -373,6 +373,6 @@ where
 &\left\|w\right\|_a^2 = \int dx \left(K_0\left(\text{tr}\epsilon(w)\right)^2 + 2 \mu \left\|\epsilon^D(w)\right\|_F^2\right),\\
 &\mathcal{L}(\Lambda \epsilon(v); w) = \int dx \left(\sum_{ij}\left(\Lambda \epsilon(v)\right)_{ij}\epsilon(w)_{ij} - f\cdot w\right),\\
 &\Lambda \epsilon(v) = K_0 \text{tr} \epsilon(v) I + \gamma(\left\|\epsilon(v)\right\|_{F}) \epsilon^{D}(v),\\
-&C_0 = 1+\frac{2\mu_1}{\alpha_1^{*}},\,\mu_1 = 1 - \frac{\delta}{2\mu},\,\alpha_1^{*} = \inf_{t_{11}, t_{12}, t_{22}} \frac{\frac{1}{4K_0}\left(t_{11} + t_{22}\right)^2 + \frac{1}{4\mu}\left(t_{11} - t_{22}\right)^2 + \frac{1}{\mu}t_{12}^2}{t_{11}^2 + 2t_{12}^2 + t_{22}^2}.
+&C_0 = 1+\frac{2\mu_1}{\alpha_1^{*}},\,\mu_1 = 1 - \frac{\delta}{2\mu},\,\alpha_1^{*} = \inf_{t^\top = t} \frac{\frac{1}{4K_0}\left(\text{tr}t\right)^2 + \frac{1}{2\mu}\left\|t^D\right\|_{F}^2}{\left\|t\right\|_{F}^2}.
 \end{split}
 ```
