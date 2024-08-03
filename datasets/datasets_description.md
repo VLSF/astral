@@ -364,14 +364,14 @@ E[u - v]^2 = \int dx \left(K_0\left(\partial_1 (u-v)_1 + \partial_2 (u-v)_2\righ
 
 And the upper bound is
 ```math
-E[u - v]^2 \leq - 2C_0 \inf_{w}\left(\frac{1}{2}\left\|w\right\|_a^2 + \mathcal{L}(v; w)\right),
+E[u - v]^2 \leq 2C_0 \left\|\eta - \sigma(v)\right\|_{a^{star}}^2,\forall \eta \in Q^{\star}_{f}, v \in W^{1}_2,
 ```
 
 where
 ```math
 \begin{split}
-&\left\|w\right\|_a^2 = \int dx \left(K_0\left(\text{tr}\epsilon(w)\right)^2 + 2 \mu \left\|\epsilon^D(w)\right\|_F^2\right),\\
-&\mathcal{L}(v; w) = \int dx \left(\sum_{ij}\sigma(v)_{ij}\epsilon(w)_{ij} - f\cdot w\right),\\
-&C_0 = 1+\frac{2\mu_2}{\alpha_1^{*}},\,\mu_2 = \frac{2\mu - \delta}{4\mu\delta},\,\alpha_1^{*} = \inf_{t^\top = t} \frac{\frac{1}{4K_0}\left(\text{tr}t\right)^2 + \frac{1}{2\mu}\left\|t^D\right\|_{F}^2}{\left\|t\right\|_{F}^2}.
+&\left\|\tau\right\|_{a^{\star}}^2 = \int dx \frac{1}{4K_0}\left(\text{tr}\tau\right)^2 + \frac{1}{2\mu}\left\|\tau^{D}\right\|_{F}^2,\\
+&C_0 = 1+\frac{2\mu_2}{\alpha_1^{*}},\,\mu_2 = \frac{2\mu - \delta}{4\mu\delta},\,\alpha_1^{*} = \inf_{t^\top = t} \frac{\frac{1}{4K_0}\left(\text{tr}t\right)^2 + \frac{1}{2\mu}\left\|t^D\right\|_{F}^2}{\left\|t\right\|_{F}^2},\\
+&Q^{\star}_{f} = \left\{\tau: \int dx \left(\sum_{ij}\tau_{ij}\epsilon(v)_{ij} - \sum_{i} f_i v_i\right) = 0 \forall v \in W^{1}_2,\tau^\top=\tau\right\}
 \end{split}
 ```
