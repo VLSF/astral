@@ -378,5 +378,5 @@ where
 
 Since we can not ensure that extra fields $\eta$ exactly belong to Q^{\star}_{f} we enforce this constraint softly and the final Astral loss becomes
 ```math
-L(v, \eta) = \left\|\eta - \sigma(v)\right\|_{a^{\star}}^2 + \left\|\partial_1 \eta_{11} + \partial_2 \eta_{12} + f_1\right\|_{2}^2 + \left\|\partial_2 \eta_{22} + \partial_2 \eta_{12} + f_2\right\|_{2}^2.
+L(v, \eta) = \left\|\eta - \sigma(v)\right\|_{a^{\star}}^2 + \left\|\partial_1 \eta_{11} + \partial_2 \eta_{12} + f_1\right\|_{2}^2 + \left\|\partial_2 \eta_{22} + \partial_1 \eta_{12} + f_2\right\|_{2}^2.
 ```
