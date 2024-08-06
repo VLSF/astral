@@ -103,15 +103,19 @@ def get_dataset(key, N_samples, K_0, mu, k_star, delta, N_terms, A, k):
 
     x = jnp.linspace(0, 1, N_x_train+2)[1:-1]
     coords_train = jnp.stack(jnp.meshgrid(x, x), 0).reshape(-1, 2)
+    data["coords_train"] = coords_train
     
     x, weights = roots_legendre(N_x_test)
     x = jnp.array((x + 1)/2)
     weights = jnp.array(weights).reshape(1, -1)
     weights = weights / 2
     coords_leg = jnp.stack(jnp.meshgrid(x, x), 2).reshape(-1, 2)
+    data["coords_leg"] = coords_leg
+    data["weights"] = weights
 
     x = jnp.linspace(0, 1, N_x_test+2)[1:-1]
     coords_test = jnp.stack(jnp.meshgrid(x, x), 0).reshape(-1, 2)
+    data["coords_test"] = coords_test
     
     for key in keys:
         data_train = get_sample(key, coords_train, K_0, mu, k_star, delta, A, k, N_terms)
