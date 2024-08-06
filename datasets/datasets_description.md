@@ -10,6 +10,7 @@ Scripts used for dataset generation:
 5. [Anisotropic diffusion equation](https://github.com/VLSF/UQNO/blob/main/datasets/PiNN_datasets/Anisotropic_diffusion.py)
 6. [Magnetostatics](https://github.com/VLSF/UQNO/blob/main/datasets/PiNN_datasets/magnetostatics.py)
 7. [Mixed diffusion equation](https://github.com/VLSF/UQNO/blob/main/datasets/PiNN_datasets/Mixed_diffusion.py)
+8. [Elastoplasticity](https://github.com/VLSF/astral/blob/main/datasets/elastoplasticity.py)
 
 Datasets are available for download:
 1. [Diffusion equation](https://disk.yandex.ru/d/ofuDDtCXYDiDpg)
@@ -19,6 +20,7 @@ Datasets are available for download:
 5. Anisotropic diffusion equation: [eps = 5](https://disk.yandex.ru/d/NFWX3gKxD1rtQQ), [eps = 10](https://disk.yandex.ru/d/YMh9PwMqT-r57Q), [eps = 15](https://disk.yandex.ru/d/s127Q9V_P0c4Mg), [eps = 20](https://disk.yandex.ru/d/Ye8aXLLiF2ZsfA)
 6. [Magnetostatics](https://disk.yandex.ru/d/SPjPMYnB2nL1GQ)
 7. Diffusion equation with mixed derivative: [eps = 0.5](https://disk.yandex.ru/d/TPwl7iyr8NqbUA), [eps = 0.7](https://disk.yandex.ru/d/gTFfZmIa9bfK-Q), [eps = 0.9](https://disk.yandex.ru/d/qus8rqEfNSQlHA), [eps = 0.99](https://disk.yandex.ru/d/tiIobWRnNsKn3w)
+8. Elastoplasticity: [elastoplasticity_1](https://disk.yandex.ru/d/elfYy0HcM8YdaQ), [elastoplasticity_2](https://disk.yandex.ru/d/lZlaqkQ0p0YiLg)
 
 One can download from GoogleColab / Jupyter Notebook using the following script
 
