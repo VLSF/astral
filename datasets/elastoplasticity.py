@@ -1,5 +1,6 @@
 import jax.numpy as jnp
 import itertools
+import sys
 
 from jax import random, vmap, grad
 from scipy.special import roots_legendre
@@ -135,3 +136,12 @@ def dataset_2(N_samples):
     K_0, mu, k_star, delta = 1.0, 1.0, 20, 1.0
     N_terms, A, k = 50, 1, 0.1
     return get_dataset(key, N_samples, K_0, mu, k_star, delta, N_terms, A, k)
+
+if __name__ == "__main__":
+    dataset = sys.argv[1]
+    N_samples = int(sys.argv[2])
+    if dataset == "1":
+        data = dataset_1(N_samples)
+    else:
+        data = dataset_2(N_samples)
+    jnp.savez(f"elastoplasticity_{dataset}.npz", **data)
