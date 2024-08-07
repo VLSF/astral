@@ -3,6 +3,7 @@ import equinox as eqx
 import optax
 import itertools
 import time
+import os
 
 from jax.nn import gelu
 from jax.lax import scan
@@ -143,4 +144,53 @@ def train(key, d, N_features_, N_layers, N_batch, N_run, N_drop, gamma_, learnin
     
     coords = random.uniform(keys[5], (N_estimate, d))*(1-eps) + eps
     upper_bound = jnp.sqrt(Astral_loss(model, coords, c1, c2))
-    return model, loss, relative_error, energy_norm, upper_bound
+    return training_time, model, loss, relative_error, energy_norm, upper_bound
+
+if __name__ == "__main__":
+    N_run = 50000
+    N_batch = 16*16
+    gamma_ = 0.5
+    N_trials = 7
+    eps = 1e-5
+    N_estimate = 5000
+
+    N_F = [50, 100]
+    N_L = [3, 4, 5]
+    N_D = [1000, 25000, 50000]
+    L_R = [1e-4, 5e-3, 1e-3]
+    
+    key = random.PRNGKey(33)
+    if not os.path.isfile("large_d_results/astral_split.csv"):
+        with open("large_d_results/astral_split.csv", "w") as f:
+            f.write("d,N_features,N_layers,N_drop,learning_rate,final_loss,relative_error,energy_norm,upper_bound,training_time,npz")
+            
+    for N_features_, N_layers, N_drop, learning_rate in itertools.product(N_F, N_L, N_D, L_R):
+        npz = hash("".join(map(str, [d, N_features_, N_layers, N_drop, learning_rate]))+"astral_split")
+        training_time = []
+        loss = []
+        relative_error = []
+        energy_norm = []
+        upper_bound = []
+        for _ in range(N_trials):
+            key = random.split(key)[0]
+            training_time_, _, loss_, relative_error_, energy_norm_, upper_bound_ = large_d_residual.train(key, d, N_features_, N_layers, N_batch, N_run, N_drop, gamma_, learning_rate, N_estimate, eps)
+            training_time.append(training_time_)
+            loss.append(loss_)
+            relative_error.append(relative_error_)
+            energy_norm.append(energy_norm_)
+            upper_bound.append(upper_bound_)
+        training_time = jnp.array(training_time)
+        loss = jnp.array(loss)
+        relative_error = jnp.array(relative_error)
+        energy_norm = jnp.array(energy_norm)
+        upper_bound = jnp.array(upper_bound)
+        with open("large_d_results/astral_split.csv", "a") as f:
+            f.write(f"{N_features_},{N_layers},{N_drop},{learning_rate},{jnp.mean(loss[:, -1])},{jnp.mean(relative_error)},{jnp.mean(energy_norm)},{jnp.mean(upper_bound)},{npz}")
+        data = {
+            "training_time": training_time,
+            "loss": loss,
+            "relative_error": relative_error,
+            "energy_norm": energy_norm,
+            "upper_bound": energy_norm
+        }
+        jnp.savez(f"{npz}.npz", **data)
