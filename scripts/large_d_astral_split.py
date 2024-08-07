@@ -4,6 +4,7 @@ import optax
 import itertools
 import time
 import os
+import sys
 
 from jax.nn import gelu
 from jax.lax import scan
@@ -147,6 +148,7 @@ def train(key, d, N_features_, N_layers, N_batch, N_run, N_drop, gamma_, learnin
     return training_time, model, loss, relative_error, energy_norm, upper_bound
 
 if __name__ == "__main__":
+    d = int(sys.argv[1])
     N_run = 50000
     N_batch = 16*16
     gamma_ = 0.5
@@ -173,7 +175,7 @@ if __name__ == "__main__":
         upper_bound = []
         for _ in range(N_trials):
             key = random.split(key)[0]
-            training_time_, _, loss_, relative_error_, energy_norm_, upper_bound_ = large_d_residual.train(key, d, N_features_, N_layers, N_batch, N_run, N_drop, gamma_, learning_rate, N_estimate, eps)
+            training_time_, _, loss_, relative_error_, energy_norm_, upper_bound_ = train(key, d, N_features_, N_layers, N_batch, N_run, N_drop, gamma_, learning_rate, N_estimate, eps)
             training_time.append(training_time_)
             loss.append(loss_)
             relative_error.append(relative_error_)
@@ -185,7 +187,7 @@ if __name__ == "__main__":
         energy_norm = jnp.array(energy_norm)
         upper_bound = jnp.array(upper_bound)
         with open("large_d_results/astral_split.csv", "a") as f:
-            f.write(f"{N_features_},{N_layers},{N_drop},{learning_rate},{jnp.mean(loss[:, -1])},{jnp.mean(relative_error)},{jnp.mean(energy_norm)},{jnp.mean(upper_bound)},{npz}")
+            f.write(f"\n{d},{N_features_},{N_layers},{N_drop},{learning_rate},{jnp.mean(loss[:, -1])},{jnp.mean(relative_error)},{jnp.mean(energy_norm)},{jnp.mean(upper_bound)},{jnp.mean(training_time)},{npz}")
         data = {
             "training_time": training_time,
             "loss": loss,
@@ -193,4 +195,4 @@ if __name__ == "__main__":
             "energy_norm": energy_norm,
             "upper_bound": energy_norm
         }
-        jnp.savez(f"{npz}.npz", **data)
+        jnp.savez(f"large_d_results/{npz}.npz", **data)
